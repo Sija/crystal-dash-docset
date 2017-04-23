@@ -1,0 +1,80 @@
+{
+    "name": "Crystal",
+    "package": "crystal",
+    "index": "docs/index.html",
+    "selectors": {
+        "section.normal > h1": {
+            "type": "Guide"
+        },
+        "h1.type-name": [
+            {
+                "type": "Type",
+                "requiretext": "^alias ",
+                "regexp": "^alias ",
+                "replacement": ""
+            },
+            {
+                "type": "Enum",
+                "requiretext": "^enum ",
+                "regexp": "^enum ",
+                "replacement": ""
+            },
+            {
+                "type": "Struct",
+                "requiretext": "^struct ",
+                "regexp": "^struct ",
+                "replacement": ""
+            },
+            {
+                "type": "Module",
+                "requiretext": "^module ",
+                "regexp": "^module ",
+                "replacement": ""
+            },
+            {
+                "type": "Class",
+                "requiretext": "^class ",
+                "regexp": "^class ",
+                "replacement": ""
+            },
+            {
+                "type": "Exception",
+                "requiretext": "^class (.*?)(Exception|Error)$",
+                "regexp": "^class ",
+                "replacement": ""
+            }
+        ],
+        "div.signature": [
+            {
+                "type": "Macro",
+                "requiretext": "^.*macro ",
+                "regexp": "^.*macro |[\\r\\n#]",
+                "replacement": ""
+            },
+            {
+                "type": "Constructor",
+                "requiretext": "^.*(abstract\\s+)?def self\\.new",
+                "regexp": "^.*(abstract\\s+)?def |[\\r\\n#]",
+                "replacement": ""
+            },
+            {
+                "type": "Method",
+                "requiretext": "^.*(abstract\\s+)?def ",
+                "regexp": "^.*(abstract\\s+)?def |[\\r\\n#]",
+                "replacement": ""
+            }
+        ],
+        "dt.entry-const": {
+            "type": "Constant",
+            "regexp": "(=.+)",
+            "replacement": ""
+        }
+    },
+    "ignore": [
+        "ABOUT"
+    ],
+    "icon16x16": "icon.png",
+    "icon32x32": "icon@2x.png",
+    "allowJS": true,
+    "ExternalURL": "https://crystal-lang.org/api/"
+}
