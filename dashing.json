@@ -1,7 +1,7 @@
 {
     "name": "Crystal",
     "package": "crystal",
-    "index": "docs/index.html",
+    "index": "reference/index.html",
     "selectors": {
         "section.normal > h1": {
             "type": "Guide"
