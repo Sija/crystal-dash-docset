@@ -1,15 +1,15 @@
 name: CI
 
 on:
-  pull_request:
-  push:
-    branches: [master]
+  workflow_dispatch:
+    inputs:
+      crystalVersion:
+        description: "Crystal version"
+        required: true
 
 jobs:
   build:
     runs-on: macos-latest
-    env:
-      CRYSTAL_VERSION: 1.0.0
 
     steps:
       - name: Download source
@@ -30,7 +30,7 @@ jobs:
             --domains crystal-lang.org \
             --no-host-directories \
             --no-parent \
-            crystal-lang.org/api/${{ env.CRYSTAL_VERSION }}/
+            crystal-lang.org/api/${{ github.event.inputs.crystalVersion }}/
 
       - name: Fetch /reference folder
         continue-on-error: true
@@ -49,7 +49,7 @@ jobs:
       - name: Hide sidebar in /api docs
         run: |
           echo ".sidebar { display: none !important }" >> \
-            api/${{ env.CRYSTAL_VERSION }}/css/style.css
+            api/${{ github.event.inputs.crystalVersion }}/css/style.css
 
       - name: Build docset
         run: ./build.sh
