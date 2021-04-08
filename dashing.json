@@ -1,6 +1,6 @@
 {
     "name": "Crystal",
-    "package": "crystal",
+    "package": "Crystal",
     "index": "reference/index.html",
     "selectors": {
         "section.normal > h1": {

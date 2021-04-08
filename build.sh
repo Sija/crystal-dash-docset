@@ -17,7 +17,7 @@ set -e
 dashing build
 
 # Path to docset db index
-DB=crystal.docset/Contents/Resources/docSet.dsidx
+DB=Crystal.docset/Contents/Resources/docSet.dsidx
 
 # Fix newlines
 newlined=$(echo "SELECT id FROM searchIndex WHERE name LIKE '%
@@ -29,7 +29,7 @@ for id in $newlined; do
 done
 
 # Compress docset
-tar --exclude='.DS_Store' -cvzf Crystal.tgz crystal.docset
+tar --exclude='.DS_Store' -cvzf Crystal.tgz Crystal.docset
 
 # Move all files into the $TARGET path
 mv Crystal.tgz "$TARGET/"
