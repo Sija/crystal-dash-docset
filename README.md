@@ -1,4 +1,4 @@
-# Crystal Docset
+# Crystal Docset [![Dockset](https://github.com/Sija/crystal-dash-docset/actions/workflows/dockset.yml/badge.svg?event=workflow_dispatch)](https://github.com/Sija/crystal-dash-docset/actions/workflows/dockset.yml)
 
 [Dash](https://kapeli.com/dash) docset documentation generator for the [Crystal Language](https://crystal-lang.org/).
 
