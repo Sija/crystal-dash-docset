@@ -19,38 +19,10 @@ jobs:
       - name: Install dependencies
         run: brew install wget dashing
 
-      - name: Fetch /reference folder
-        continue-on-error: true
-        run: |
-          wget \
-            -e robots=off \
-            --recursive \
-            --page-requisites \
-            --html-extension \
-            --convert-links \
-            --no-host-directories \
-            --no-parent \
-            --domains crystal-lang.org \
-            https://crystal-lang.org/reference/
-
-      - name: Fetch /api folder
-        continue-on-error: true
-        run: |
-          wget \
-            -e robots=off \
-            --recursive \
-            --page-requisites \
-            --html-extension \
-            --convert-links \
-            --no-host-directories \
-            --no-parent \
-            --domains crystal-lang.org \
-            https://crystal-lang.org/api/${{ github.event.inputs.crystalVersion }}/
-
-      - name: Hide sidebar in /api docs
-        run: |
-          echo ".sidebar { display: none !important }" >> \
-            api/${{ github.event.inputs.crystalVersion }}/css/style.css
+      - name: Download docs
+        run: ./download.sh
+        env:
+          CRYSTAL_VERSION: ${{ github.event.inputs.crystalVersion }}
 
       - name: Build docset
         run: ./build.sh

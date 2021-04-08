@@ -7,10 +7,7 @@
 NOTE: You'll need [dashing](https://github.com/technosophos/dashing) utility
 installed within `$PATH`.
 
-1. Run a site capture such as *SiteSucker* or a `curl`/`wget` command
-   - Capture everything under https://crystal-lang.org/reference/
-     (*SiteSucker* will also pull in `/api/...` if you don't do it yourself)
-   - Move just captured `reference` and `api` directories into this folder
+1. Run `CRYSTAL_VERSION=<like 1.0.0> ./download.sh` to download the API docs
 2. Run `./build.sh`
 3. Enjoy your newly bundled `Crystal.docset` 🎉
 
