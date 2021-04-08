@@ -1,0 +1,61 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    env:
+      CRYSTAL_VERSION: 1.0.0
+
+    steps:
+      - name: Download source
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: brew install wget dashing
+
+      - name: Fetch /api folder
+        continue-on-error: true
+        run: |
+          wget \
+            --recursive \
+            --no-clobber \
+            --page-requisites \
+            --html-extension \
+            --convert-links \
+            --domains crystal-lang.org \
+            --no-host-directories \
+            --no-parent \
+            crystal-lang.org/api/${{ env.CRYSTAL_VERSION }}/
+
+      - name: Fetch /reference folder
+        continue-on-error: true
+        run: |
+          wget \
+            --recursive \
+            --no-clobber \
+            --page-requisites \
+            --html-extension \
+            --convert-links \
+            --domains crystal-lang.org \
+            --no-host-directories \
+            --no-parent \
+            crystal-lang.org/reference/
+
+      - name: Hide sidebar in /api docs
+        run: |
+          echo ".sidebar { display: none !important }" >> \
+            api/${{ env.CRYSTAL_VERSION }}/css/style.css
+
+      - name: Build docset
+        run: ./build.sh
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: Crystal
+          path: Crystal.tgz
