@@ -1,0 +1,61 @@
+name: CI
+
+on:
+  workflow_dispatch:
+    inputs:
+      crystalVersion:
+        description: "Crystal version"
+        required: true
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Download source
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: brew install wget dashing
+
+      - name: Fetch /api folder
+        continue-on-error: true
+        run: |
+          wget \
+            --recursive \
+            --no-clobber \
+            --page-requisites \
+            --html-extension \
+            --convert-links \
+            --domains crystal-lang.org \
+            --no-host-directories \
+            --no-parent \
+            crystal-lang.org/api/${{ github.event.inputs.crystalVersion }}/
+
+      - name: Fetch /reference folder
+        continue-on-error: true
+        run: |
+          wget \
+            --recursive \
+            --no-clobber \
+            --page-requisites \
+            --html-extension \
+            --convert-links \
+            --domains crystal-lang.org \
+            --no-host-directories \
+            --no-parent \
+            crystal-lang.org/reference/
+
+      - name: Hide sidebar in /api docs
+        run: |
+          echo ".sidebar { display: none !important }" >> \
+            api/${{ github.event.inputs.crystalVersion }}/css/style.css
+
+      - name: Build docset
+        run: ./build.sh
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: Crystal
+          path: Crystal.tgz
