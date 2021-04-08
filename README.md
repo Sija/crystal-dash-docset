@@ -7,13 +7,12 @@
 NOTE: You'll need [dashing](https://github.com/technosophos/dashing) utility
 installed within `$PATH`.
 
-1. Run a site capture such as *SiteSucker* or a glorious `curl` command
+1. Run a site capture such as *SiteSucker* or a `curl`/`wget` command
    - Capture everything under https://crystal-lang.org/reference/
      (*SiteSucker* will also pull in `/api/...` if you don't do it yourself)
    - Move just captured `reference` and `api` directories into this folder
 2. Run `./build.sh`
-3. Then run `TARGET=<...> ./install.sh`, with the `TARGET` variable pointing
-   to your forked [*Kapeli* docset repository](https://github.com/Kapeli/Dash-User-Contributions)
+3. Enjoy your newly bundled `Crystal.docset` 🎉
 
 ## Authors
 
