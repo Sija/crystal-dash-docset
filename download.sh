@@ -16,6 +16,7 @@ set -e
 # Fetch /reference docs
 wget \
     -e robots=off \
+    --no-verbose \
     --recursive \
     --reject '*.ico,*.txt,*.mp3,*.pdf,*.tgz,*.flv,*.avi,*.mpeg,*.iso' \
     --page-requisites \
@@ -29,6 +30,7 @@ wget \
 # Fetch /api docs
 wget \
     -e robots=off \
+    --no-verbose \
     --recursive \
     --reject '*.ico,*.txt,*.mp3,*.pdf,*.tgz,*.flv,*.avi,*.mpeg,*.iso' \
     --page-requisites \
