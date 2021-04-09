@@ -1,0 +1,2 @@
+brew "wget"
+brew "dashing"

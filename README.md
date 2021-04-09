@@ -4,8 +4,7 @@
 
 ## How to generate the docset
 
-NOTE: You'll need [dashing](https://github.com/technosophos/dashing) utility
-installed within `$PATH`.
+**NOTE**: You'll need `wget` and [`dashing`](https://github.com/technosophos/dashing) utilities installed (you can use `brew bundle` to install those).
 
 1. Run `CRYSTAL_VERSION=<like 1.0.0> ./download.sh` to download the API docs
 2. Run `./build.sh`
