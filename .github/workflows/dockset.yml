@@ -11,6 +11,8 @@ jobs:
   build:
     name: Build dockset for Crystal version ${{ github.event.inputs.crystalVersion }}
     runs-on: macos-latest
+    env:
+      CRYSTAL_VERSION: ${{ github.event.inputs.crystalVersion }}
 
     steps:
       - name: Download source
@@ -21,8 +23,6 @@ jobs:
 
       - name: Download docs
         run: ./download.sh
-        env:
-          CRYSTAL_VERSION: ${{ github.event.inputs.crystalVersion }}
 
       - name: Build docset
         run: ./build.sh
@@ -32,3 +32,19 @@ jobs:
         with:
           name: Crystal
           path: Crystal.tgz
+
+      - name: Create a new Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ env.CRYSTAL_VERSION }}
+          name: Crystal ${{ env.CRYSTAL_VERSION }}
+          body: |
+            `Crystal.docset` auto-generated for Crystal ${{ env.CRYSTAL_VERSION }}
+
+            Sources:
+            - https://crystal-lang.org/reference/
+            - https://crystal-lang.org/api/${{ env.CRYSTAL_VERSION }}/
+          files: |
+            Crystal.tgz
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
