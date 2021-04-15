@@ -18,7 +18,7 @@ wget \
     -e robots=off \
     --no-verbose \
     --recursive \
-    --reject '*.ico,*.txt,*.mp3,*.pdf,*.tgz,*.flv,*.avi,*.mpeg,*.iso' \
+    --reject '*.ico,*.txt,*.pdf,*.mp3,*.mp4,*.tgz,*.zip,*.flv,*.avi,*.mpeg,*.mpg,*.iso' \
     --page-requisites \
     --html-extension \
     --convert-links \
@@ -32,7 +32,7 @@ wget \
     -e robots=off \
     --no-verbose \
     --recursive \
-    --reject '*.ico,*.txt,*.mp3,*.pdf,*.tgz,*.flv,*.avi,*.mpeg,*.iso' \
+    --reject '*.ico,*.txt,*.pdf,*.mp3,*.mp4,*.tgz,*.zip,*.flv,*.avi,*.mpeg,*.mpg,*.iso' \
     --page-requisites \
     --html-extension \
     --convert-links \
