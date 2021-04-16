@@ -2,7 +2,11 @@
 
 [Dash](https://kapeli.com/dash) docset documentation generator for the [Crystal Language](https://crystal-lang.org/).
 
-## How to generate the docset
+## Download
+
+Download the latest version from the [releases page](https://github.com/Sija/crystal-dash-docset/releases/latest).
+
+## Generate the Docset
 
 **NOTE**: You'll need `wget` and [`dashing`](https://github.com/technosophos/dashing) utilities installed (you can use `brew bundle` to install those).
 
