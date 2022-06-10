@@ -9,10 +9,10 @@ on:
 
 jobs:
   build:
-    name: Build dockset for Crystal version ${{ github.event.inputs.crystalVersion }}
+    name: Build dockset for Crystal version ${{ inputs.crystalVersion }}
     runs-on: macos-latest
     env:
-      CRYSTAL_VERSION: ${{ github.event.inputs.crystalVersion }}
+      CRYSTAL_VERSION: ${{ inputs.crystalVersion }}
 
     steps:
       - name: Download source
