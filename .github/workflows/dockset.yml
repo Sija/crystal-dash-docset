@@ -16,7 +16,7 @@ jobs:
 
     steps:
       - name: Download source
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Install dependencies
         run: brew bundle
@@ -28,7 +28,7 @@ jobs:
         run: ./build.sh
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: Crystal
           path: Crystal.tgz
